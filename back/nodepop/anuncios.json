@@ -1,0 +1,28 @@
+{
+    "anuncios": [{
+        "nombre": "Bicicleta",
+        "venta": true,
+        "precio": 230.15,
+        "foto": "bici.jpg",
+        "tags": ["lifestyle", "motor"]
+    }, {
+        "nombre": "iPhone 3GS",
+        "venta": false,
+        "precio": 50.00,
+        "foto": "iphone.png",
+        "tags": ["lifestyle", "mobile"]
+    }, {
+        "nombre": "Bicicleta de juguete",
+        "venta": true,
+        "precio": 20,
+        "foto": "bici.jpg",
+        "tags": ["lifestyle", "motor", "juguete"]
+    }, {
+        "nombre": "iPhone chucherias",
+        "venta": true,
+        "precio": 5,
+        "foto": "iphoneJuguete.png",
+        "tags": ["life", "mobile", "sugar"]
+    }]
+
+}
