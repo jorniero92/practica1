@@ -3,15 +3,19 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var auth = require('../lib/auth');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-
+router.get('/', auth(), function(req, res, next) {
+    console.info("req user: ", req.user);
+    //console.info("res", res);
+    //console.info("next", next);
+    
     var sort = req.query.sort;
     User.list(sort, function(err, rows) {
         if (err) {
             res.json({ result: false, err: err });
-            console.log('error en users.js');
+            console.info('error en users.js');
             return;
         }
         res.json({ result: true, users: rows });
@@ -19,7 +23,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.post('/', function(req, res) {
+router.post('/', auth(), function(req, res) {
 
     var user = new User(req.body);
     var queryUsuarios = User.find({ nombre: req.body.nombre });
@@ -31,7 +35,7 @@ router.post('/', function(req, res) {
             return;
         }
 
-        console.log("long rows.length: ", rows.length);
+        //console.info("long rows.length: ", rows.length);
         user.save(function(err, newRow) {
             if (err) {
                 res.json({ result: false, err: err });
