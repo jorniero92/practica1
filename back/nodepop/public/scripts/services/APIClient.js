@@ -10,6 +10,8 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
             function(response) {
                 //Resolvemos promesa
                 deferred.resolve(response.data);
+                console.info("data del apiRequest: ", data);
+                console.info("response data del apiRequest: ", response.data);
             },
             function(response) {
                 //Rechazar promesa
@@ -20,7 +22,30 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
         //Devolver promesa      
         return deferred.promise;
         // return $http.get('/api/movies');
-    }
+    };
+
+    this.comproveLogin = function(nombre, clave){
+        var deferred = $q.defer();
+        //Hacer trabajo asíncrono
+        $http.get(url).then(
+            function(response) {
+                //Resolvemos promesa
+                deferred.resolve(response.data);
+            },
+            function(response) {
+                //Rechazar promesa
+                //Esta gestión de error es bastante pobre, habría que mejorarla
+                deferred.reject(response.data);
+            }
+        );
+        //Devolver promesa      
+        return deferred.promise;
+    };
+
+    this.getUser = function(){
+        return this.apiRequest(apiPath.nombre, apiPath.clave);
+    };
+    
 
     this.getMovies = function() {
         return this.apiRequest(apiPath.movies);

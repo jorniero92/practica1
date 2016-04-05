@@ -7,11 +7,12 @@ var auth = require('../lib/auth');
 
 /* GET users listing. */
 router.get('/', auth(), function(req, res, next) {
-    console.info("req user: ", req.user);
+    //console.info("req user: ", req);
     //console.info("res", res);
     //console.info("next", next);
-    
+
     var sort = req.query.sort;
+    console.info("sort: ", sort);
     User.list(sort, function(err, rows) {
         if (err) {
             res.json({ result: false, err: err });
@@ -23,7 +24,7 @@ router.get('/', auth(), function(req, res, next) {
     });
 });
 
-router.post('/', auth(), function(req, res) {
+router.post('/', function(req, res) {
 
     var user = new User(req.body);
     var queryUsuarios = User.find({ nombre: req.body.nombre });
