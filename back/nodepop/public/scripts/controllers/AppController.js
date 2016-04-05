@@ -2,7 +2,7 @@ angular.module("pelisAngular").controller("AppController",
 
     //Cada vez que queramos utilizar un servicio lo tenemos que inyectar tanto como parametro como
     //en la funcion
-    ["$scope", "$sce", "HtmlStorage", "$location", "paths", function($scope, $sce, HtmlStorage, $location, paths) {
+    ["$scope", "$sce", "APIClient", "HtmlStorage", "$location", "paths", function($scope, $sce, APIClient, HtmlStorage, $location, paths) {
         var controller = this;
 
         controller.titles = {};
@@ -33,8 +33,26 @@ angular.module("pelisAngular").controller("AppController",
             $scope.model.title = title;
         });
 
-        $scope.login = function(username) {
+        $scope.login = function(username, password) {
+            console.info("login username: ", username);
+            console.info("login password: ", password);
+
+            APIClient.comproveLogin(username, password).then(
+                //pelicula encontrada
+                function(movie) {
+                    console.info("movie peli encontrada");
+                    $scope.model = movie;
+                    $scope.uiState = 'ideal';
+                    $scope.$emit("ChangeTitle", $scope.model.title);
+                },
+                //pelicula no encontrada
+                function(error) {
+                    $location.url(paths.notFound);
+                }
+            );
+
             HtmlStorage.saveUser(username);
+            console.info("username", HtmlStorage.username);
             $location.url(paths.movieList);
         };
 

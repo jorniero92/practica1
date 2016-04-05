@@ -7,9 +7,6 @@ var auth = require('../lib/auth');
 
 /* GET users listing. */
 router.get('/', auth(), function(req, res, next) {
-    //console.info("req user: ", req);
-    //console.info("res", res);
-    //console.info("next", next);
 
     var sort = req.query.sort;
     console.info("sort: ", sort);
@@ -26,8 +23,11 @@ router.get('/', auth(), function(req, res, next) {
 
 router.post('/', function(req, res) {
 
+
     var user = new User(req.body);
     var queryUsuarios = User.find({ nombre: req.body.nombre });
+    console.info("nombre en post: ", req.nombre);
+    console.info("pass en post: ", req.clave);
 
     queryUsuarios.exec(function(err, rows) {
 

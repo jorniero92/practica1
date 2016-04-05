@@ -1,6 +1,6 @@
 angular.module("pelisAngular").constant("paths", {
 	login: "/",
-    movieList: "/movies",
+    movieList: "/movieList",
     newMovie: "/movies/new",
 	movieDetail: "/movies/:id",
 	movieUserList: "/moviesUser",

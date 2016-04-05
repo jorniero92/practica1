@@ -4,6 +4,7 @@ angular.module("pelisAngular").controller("MoviesListController", ["$scope", "$l
         /*Redireccion si no esta logeado*/
         if(!HtmlStorage.getUser()){
             $location.url(paths.login);
+            console.info("Redireccion si no esta logeado: ", HtmlStorage.getUser());
         }
 
         $scope.model = [];
@@ -11,6 +12,7 @@ angular.module("pelisAngular").controller("MoviesListController", ["$scope", "$l
         $scope.uiState = 'loading';        
 
         $scope.getMovieDetailURL = function(movie) {
+            console.info("getMovieDetailURL: ", paths.movieDetail);
             return URL.resolve(paths.movieDetail, { id: movie.id });
         };
 

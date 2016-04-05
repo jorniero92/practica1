@@ -1,5 +1,4 @@
 angular.module("pelisAngular").value("apiPath", {
-	login: "/",
-	movies: "/api/movies",
+	users: "/users",
 	movieDetail: "/api/movies/:id"
 });
