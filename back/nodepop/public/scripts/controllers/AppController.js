@@ -36,11 +36,11 @@ angular.module("pelisAngular").controller("AppController",
         $scope.login = function(username, password) {
             console.info("login username: ", username);
             console.info("login password: ", password);
-
-            APIClient.comproveLogin(username, password).then(
+            var user = { nombre: username, clave: password };
+            APIClient.comproveLogin(user).then(
                 //pelicula encontrada
                 function(movie) {
-                    console.info("movie peli encontrada");
+                    //console.info("movie peli encontrada");
                     $scope.model = movie;
                     $scope.uiState = 'ideal';
                     $scope.$emit("ChangeTitle", $scope.model.title);

@@ -7,7 +7,7 @@ angular.module("pelisAngular").controller("AddMovieController", ["$scope", "$loc
         $scope.errorMessage = null;
 
         // Controller init
-        $scope.$emit("ChangeTitle", "Add Movie");
+        $scope.$emit("ChangeTitle", "Add Recipe");
 
 
         $scope.addMovie = function() {

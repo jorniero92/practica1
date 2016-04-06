@@ -11,12 +11,14 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
                 //Resolvemos promesa
                 deferred.resolve(response.data);
                 console.info("data del apiRequest: ", data);
+                console.info("url Bien apiRequest: ", url);
                 console.info("response data del apiRequest: ", response.data);
             },
             function(response) {
                 //Rechazar promesa
                 //Esta gestión de error es bastante pobre, habría que mejorarla
                 deferred.reject(response.data);
+                console.info("url Mal apiRequest: ", url);
             }
         );
         //Devolver promesa      
@@ -24,10 +26,10 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
         // return $http.get('/api/movies');
     };
 
-    this.comproveLogin = function(nombre, clave){
+    this.comproveLogin = function(user) {
         var deferred = $q.defer();
         //Hacer trabajo asíncrono
-        $http.get(url).then(
+        $http.post(apiPath.users, user).then(
             function(response) {
                 //Resolvemos promesa
                 deferred.resolve(response.data);
@@ -42,10 +44,10 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
         return deferred.promise;
     };
 
-    this.getUser = function(){
+    this.getUser = function() {
         return this.apiRequest(apiPath.nombre, apiPath.clave);
     };
-    
+
 
     this.getMovies = function() {
         return this.apiRequest(apiPath.movies);
@@ -109,7 +111,7 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
         // Crear el objeto diferido
         var deffered = $q.defer();
         //console.log("model.username",model.username );
-        
+
         // hacer asincrono el trabajo
         $http.post(apiPath.movies, movie).then(
             //peticion ok

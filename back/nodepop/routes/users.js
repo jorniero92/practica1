@@ -22,12 +22,10 @@ router.get('/', auth(), function(req, res, next) {
 });
 
 router.post('/', function(req, res) {
-
-
     var user = new User(req.body);
     var queryUsuarios = User.find({ nombre: req.body.nombre });
-    console.info("nombre en post: ", req.nombre);
-    console.info("pass en post: ", req.clave);
+    console.info("queryUsuarios post: ", queryUsuarios);
+    //console.info("pass en post: ", req.body.clave);
 
     queryUsuarios.exec(function(err, rows) {
 
