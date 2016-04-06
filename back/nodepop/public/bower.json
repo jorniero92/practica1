@@ -5,7 +5,7 @@
     "Jorge Nieto Rodrigo <jorge.nieto@babel.es>"
   ],
   "description": "",
-  "main": "",
+  "main": "index.js",
   "moduleType": [],
   "license": "MIT",
   "ignore": [

@@ -1,11 +1,13 @@
 "use strict";
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
+//var mongoose = require('mongoose');
+//var User = mongoose.model('User');
 
 
 router.get('/', function(req, res) {
+    res.send('respond with a resource');
+    /*
     //console.info("sort: ", sort);
     User.list(req.body, function(err, rows) {
         if (err) {
@@ -16,8 +18,9 @@ router.get('/', function(req, res) {
         res.json({ result: true, users: rows });
         return;
     });
+    */
 });
-
+/*
 router.post('/', function(req, res) {
     //en user.clave y user.nombre
     var user = new User(req.body);
@@ -47,8 +50,10 @@ router.post('/', function(req, res) {
             });
         });
     }
+
+    //devolver algo si no esta la clave
 });
 
-
+*/
 
 module.exports = router;

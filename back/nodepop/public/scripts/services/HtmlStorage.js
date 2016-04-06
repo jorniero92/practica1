@@ -1,18 +1,46 @@
-angular.module("recipesAngular").service("HtmlStorage", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
+angular.module("recipesAngular").service("HtmlStorage", ["$http", "$q", "apiPath", "URL", "$window", function($http, $q, apiPath, URL, $window) {
 
     this.user = null;
 
-
     this.saveUser = function(username) {
-        localStorage.setItem("username", username);
-        //console.info("username save User", username);
+        window.localStorage.setItem("username", username);
     };
+    /*
+        this.setLogin = function(nick) {
+            // Guardar el usuario en memoria del navegador
+            window.localStorage.setItem("nick", nick);
+        };
+    */
     this.getUser = function() {
-        return localStorage.getItem("username");
+        return window.localStorage.getItem("username");
     };
-
+    /*
+    this.getLogin = function() {
+        // Recuperamos el usuario guardado en el navegador
+        // console.log (window.localStorage.getItem("user"));
+        return window.localStorage.getItem("nick");
+    };
+    */
+    thi.isLogin = function() {
+        var user = window.localStorage.getItem("username") || "";
+        if (user == "") {
+            return false;
+        } else {
+            return true;
+        }
+    };
+/*
+    this.isLogin = function() {
+        var user = window.localStorage.getItem("nick") || "";
+        if (user == "") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+*/
     this.removeUser = function() {
-        localStorage.removeItem("username");
+        window.localStorage.removeItem("username");
     };
 
 }]);

@@ -1,7 +1,4 @@
 angular.module("recipesAngular").controller("AppController",
-
-    //Cada vez que queramos utilizar un servicio lo tenemos que inyectar tanto como parametro como
-    //en la funcion
     ["$scope", "$sce", "APIClient", "HtmlStorage", "$location", "paths", function($scope, $sce, APIClient, HtmlStorage, $location, paths) {
         var controller = this;
 

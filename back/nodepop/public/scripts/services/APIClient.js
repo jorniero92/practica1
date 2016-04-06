@@ -1,10 +1,9 @@
 angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
     console.info("apiPath en APIClient: ", apiPath);
 
-    this.apiRequest = function(nombre, clave) {
+    this.apiRequest = function(url) {
         var deferred = $q.defer();
-        //Hacer trabajo asíncrono
-        $http.get(nombre, clave).then(
+        $http.get(url).then(
             function(response) {
                 deferred.resolve(response.data);
             },
@@ -12,10 +11,47 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
                 deferred.reject(response.data);
             }
         );
-        //Devolver promesa      
         return deferred.promise;
     };
 
+    this.getItems = function() {
+        return this.apiRequest(apiPaths.items);
+    };
+
+    this.getItem = function(itemID) {
+        var url = URL.resolve(apiPaths.itemDetail, { id: itemID });
+        return this.apiRequest(url);
+    };
+
+    this.registerUser = function(user) {
+        var deferred = $q.defer();
+        $http.post(apiPaths.users, user).then(
+            function(response) {
+                deferred.resolve(response.data);
+            },
+            function(response) {
+                deferred.reject(response.data);
+            }
+        );
+        return deferred.promise;
+    };
+
+    this.logIn = function(credentials) {
+        var deferred = $q.defer();
+        $http.post(apiPaths.loginApiPath, credentials).then(
+            function(response) {
+                deferred.resolve(response.data);
+            },
+            function(response) {
+                deferred.reject(response.data);
+            }
+        );
+        return deferred.promise;
+    };
+
+
+
+    /*
     this.comproveLogin = function(user) {
         var deferred = $q.defer();
 
@@ -51,8 +87,7 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         return this.apiRequest(url);
     };
 
-
-    /*crear una nueva receta, hacer un post a la URL */
+    //crear una nueva receta, hacer un post a la URL 
     this.createRecipe = function(recipe) {
         // Crear el objeto diferido
         var deffered = $q.defer();
@@ -71,5 +106,5 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         //devolver la promesa
         return deffered.promise;
     };
-
+    */
 }]);
