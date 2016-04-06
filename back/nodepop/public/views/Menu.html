@@ -7,21 +7,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#{{::paths.movieList}}">Pelis Angular</a>
+            <a class="navbar-brand" href="#{{::paths.recipeList}}">Recipe</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li ng-class="getClassForItem(paths.movieList)">
-                    <a href="#{{::paths.movieList}}">Movies</a>
+                <li ng-class="getClassForItem(paths.recipeList)">
+                    <a href="#{{::paths.recipeList}}">Recipe</a>
                 </li>
-                <li ng-class="getClassForItem(paths.movieRentList)">
-                    <a href="#{{::paths.movieRentList}}">Rented</a>
+                <li ng-class="getClassForItem(paths.recipeUserList)">
+                    <a href="#{{::paths.recipeUserList}}">My Recipes</a>
                 </li>
-                <li ng-class="getClassForItem(paths.movieUserList)">
-                    <a href="#{{::paths.movieUserList}}">My Movies</a>
-                </li>
-                <li ng-class="getClassForItem(paths.newMovie)">
-                    <a href="#{{::paths.newMovie}}">Add Movie</a>
+                <li ng-class="getClassForItem(paths.newRecipe)">
+                    <a href="#{{::paths.newRecipe}}">Add Recipe</a>
                 </li>
                 <li ng-class="getClassForItem(paths.login)" ng-click="logout()">
                     <a href="#{{::paths.login}}">Logout</a>

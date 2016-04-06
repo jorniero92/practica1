@@ -1,4 +1,4 @@
-angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
+angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
 
     this.apiRequest = function(url) {
         //Hay que devolver las películas, no un objeto de la petición

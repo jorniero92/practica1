@@ -1,9 +1,8 @@
-angular.module("pelisAngular").constant("paths", {
+angular.module("recipesAngular").constant("paths", {
 	login: "/",
-    movieList: "/movieList",
-    newMovie: "/movies/new",
-	movieDetail: "/movies/:id",
-	movieUserList: "/moviesUser",
-	movieRentList: "/moviesRented",
+    recipeList: "/recipeList",
+    newRecipe: "/recipe/new",
+	recipeDetail: "/recipe/:id",
+	recipeUserList: "/recipeUser",
 	notFound: "/sorry"
 })

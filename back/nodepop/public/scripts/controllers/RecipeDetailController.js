@@ -1,4 +1,4 @@
-angular.module("pelisAngular").controller("MovieDetailController", ["$scope", "$routeParams", "$location", "APIClient", "paths",
+angular.module("recipesAngular").controller("MovieDetailController", ["$scope", "$routeParams", "$location", "APIClient", "paths",
         function($scope, $routeParams, $location, APIClient, paths) {
             //scope init
             $scope.model = {};

@@ -1,4 +1,4 @@
-angular.module("pelisAngular").directive("mediaItem", function() {
+angular.module("recipesAngular").directive("mediaItem", function() {
     return {
         restrict: "AE",
         scope: {

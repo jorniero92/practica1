@@ -1,8 +1,8 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Poster</th>
-            <th>Title</th>
+            <th>Image</th>
+            <th>Recipe</th>
             <th>Year</th>
             <th>Rating</th>
             <th>
@@ -11,7 +11,6 @@
         </tr>
     </thead>
     <tbody>
-        <!-- ng-if="userRented(item.userRent) == true" -->
         <tr ng-repeat="item in model | filter:query">
             <td>
                 <img ng-src="{{::item.poster_url}}" alt="{{::item.title}}'s poster" title="{{::item.title}}">

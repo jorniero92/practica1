@@ -1,4 +1,4 @@
-angular.module("pelisAngular").value("apiPath", {
+angular.module("recipesAngular").value("apiPath", {
 	users: "/users",
-	movieDetail: "/api/movies/:id"
+	movieDetail: "/api/recipes/:id"
 });
