@@ -1,15 +1,13 @@
-angular.module("recipesAngular").controller("MovieDetailController", ["$scope", "$routeParams", "$location", "APIClient", "paths",
+angular.module("recipesAngular").controller("RecipeDetailController", ["$scope", "$routeParams", "$location", "APIClient", "paths",
         function($scope, $routeParams, $location, APIClient, paths) {
             //scope init
             $scope.model = {};
             $scope.uiState = 'loading';
-
-
             $scope.$emit("ChangeTitle", "Loading...");
-            APIClient.getMovie($routeParams.id).then(
+            APIClient.getRecipe($routeParams.id).then(
                 //pelicula encontrada
-                function(movie ) {
-                    $scope.model = movie;
+                function(recipe) {
+                    $scope.model = recipe;
                     $scope.uiState = 'ideal';
                     $scope.$emit("ChangeTitle", $scope.model.title);
                 },

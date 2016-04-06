@@ -5,13 +5,19 @@
             <form name="loginForm" class="form-signin" novalidate ng-submit="login(model.username, model.password)">
                 <h2 class="form-signin-heading">Please sign in</h2>
                 <label for="username" class="sr-only">Username</label>
-                <input type="text" name="username" required class="form-control" ng-model="model.username" placeholder="Username" autofocus>
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">Username</span>
+                    <input type="text" name="username" required class="form-control" ng-model="model.username" autofocus aria-describedby="sizing-addon2">
+                </div>
                 <div class="text-danger" ng-show="loginForm.username.$dirty && loginForm.username.$error.required">
                     The username is required
                 </div>
                 <br>
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" name="password" minlength="4" required class="form-control" ng-model="model.password" placeholder="Password" autofocus>
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">Password</span>
+                    <input type="password" name="password" minlength="4" required class="form-control" ng-model="model.password" autofocus aria-describedby="sizing-addon2">
+                </div>
                 <div class="text-danger" ng-show="loginForm.password.$dirty && loginForm.password.$error.required">
                     The password is required
                 </div>

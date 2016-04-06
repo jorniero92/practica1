@@ -1,42 +1,35 @@
 angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
+    console.info("apiPath en APIClient: ", apiPath);
 
-    this.apiRequest = function(url) {
-        //Hay que devolver las películas, no un objeto de la petición
-        //Por lo que habrá que resolver el retorno de http.get
-        //Crear el objeto diferido
+    this.apiRequest = function(nombre, clave) {
         var deferred = $q.defer();
         //Hacer trabajo asíncrono
-        $http.get(url).then(
+        $http.get(nombre, clave).then(
             function(response) {
-                //Resolvemos promesa
                 deferred.resolve(response.data);
-                console.info("data del apiRequest: ", data);
-                console.info("url Bien apiRequest: ", url);
-                console.info("response data del apiRequest: ", response.data);
             },
             function(response) {
-                //Rechazar promesa
-                //Esta gestión de error es bastante pobre, habría que mejorarla
                 deferred.reject(response.data);
-                console.info("url Mal apiRequest: ", url);
             }
         );
         //Devolver promesa      
         return deferred.promise;
-        // return $http.get('/api/movies');
     };
 
     this.comproveLogin = function(user) {
         var deferred = $q.defer();
+
         //Hacer trabajo asíncrono
-        $http.post(apiPath.users, user).then(
+        $http.post(apiPath.login, user).then(
             function(response) {
+                console.info("comproveLogin OK");
+                //console.info("comproveLogin response.data OK:", response.data);
                 //Resolvemos promesa
                 deferred.resolve(response.data);
             },
             function(response) {
                 //Rechazar promesa
-                //Esta gestión de error es bastante pobre, habría que mejorarla
+                console.info("comproveLogin KO");
                 deferred.reject(response.data);
             }
         );
@@ -49,26 +42,22 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
     };
 
 
-    this.getMovies = function() {
-        return this.apiRequest(apiPath.movies);
+    this.getRecipes = function() {
+        return this.apiRequest(apiPath.recipes);
     };
 
-    this.getMovie = function(movieId) {
-        var url = URL.resolve(apiPath.movieDetail, { id: movieId });
+    this.getRecipe = function(recipeId) {
+        var url = URL.resolve(apiPath.recipeDetail, { id: recipeId });
         return this.apiRequest(url);
     };
 
-    this.rentMovie = function(movie, username) {
+
+    /*crear una nueva receta, hacer un post a la URL */
+    this.createRecipe = function(recipe) {
         // Crear el objeto diferido
         var deffered = $q.defer();
-        movie['userRent'] = username;
-
-        // hacer asincrono el trabajo
-        var url = URL.resolve(apiPath.movieDetail, { id: movie.id });
-
-        $http.put(url, movie).then(
-            //console.log("Api paths", apiPath.movies);
-            //peticion ok
+        $http.post(apiPath.recipes, recipe).then(
+            //peticion OK
             function(response) {
                 //resolver la promesa
                 deffered.resolve(response.data);
@@ -82,52 +71,5 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         //devolver la promesa
         return deffered.promise;
     };
-
-    /*crear una nueva pelicula, hacer un post a la URL */
-    this.createMovie = function(movie) {
-        // Crear el objeto diferido
-        var deffered = $q.defer();
-
-        // hacer asincrono el trabajo
-        $http.post(apiPath.movies, movie).then(
-            //console.log("Api paths", apiPath.movies);
-            //peticion ok
-            function(response) {
-                //resolver la promesa
-                deffered.resolve(response.data);
-            },
-            //peticion KO
-            function(response) {
-                //rechazar la promesa
-                deffered.reject(response.data);
-            }
-        );
-        //devolver la promesa
-        return deffered.promise;
-    };
-
-    /*Elimina una nueva pelicula */
-    this.deleteMovie = function(movie) {
-        // Crear el objeto diferido
-        var deffered = $q.defer();
-        //console.log("model.username",model.username );
-
-        // hacer asincrono el trabajo
-        $http.post(apiPath.movies, movie).then(
-            //peticion ok
-            function(response) {
-                //resolver la promesa
-                deffered.resolve(response.data);
-            },
-            //peticion KO
-            function(response) {
-                //rechazar la promesa
-                deffered.reject(response.data);
-            }
-        );
-        //devolver la promesa
-        return deffered.promise;
-    };
-
 
 }]);

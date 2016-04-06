@@ -5,12 +5,12 @@ var router = express.Router();
 
 // barra algo
 router.get('/', auth(), function(req, res, next) {
-    //console.log(req.query);
+    console.info("get del amdmin.js");
     res.send('Hola Express1');
 });
 
 router.post('/', function(req, res) {
-    //console.log(req.body);
+    console.info("post del amdmin.js");
     res.send('body recogiendo4');
 });
 

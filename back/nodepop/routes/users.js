@@ -3,14 +3,11 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var auth = require('../lib/auth');
 
-/* GET users listing. */
-router.get('/', auth(), function(req, res, next) {
 
-    var sort = req.query.sort;
-    console.info("sort: ", sort);
-    User.list(sort, function(err, rows) {
+router.get('/', function(req, res) {
+    //console.info("sort: ", sort);
+    User.list(req.body, function(err, rows) {
         if (err) {
             res.json({ result: false, err: err });
             console.info('error en users.js');
@@ -22,30 +19,34 @@ router.get('/', auth(), function(req, res, next) {
 });
 
 router.post('/', function(req, res) {
+    //en user.clave y user.nombre
     var user = new User(req.body);
-    var queryUsuarios = User.find({ nombre: req.body.nombre });
-    console.info("queryUsuarios post: ", queryUsuarios);
+
+    var queryUsuarios = User.find({ nombre: user.nombre });
+    console.info("queryUsuarios nombre post: ", queryUsuarios.nombre);
     //console.info("pass en post: ", req.body.clave);
+    if (user.clave == queryUsuarios.clave) {
+        res.json({ result: true, row: row });
+        return;
+    } else {
+        queryUsuarios.exec(function(err, rows) {
 
-    queryUsuarios.exec(function(err, rows) {
-
-        if (err) {
-            res.json({ result: false, err: " error query" });
-            return;
-        }
-
-        //console.info("long rows.length: ", rows.length);
-        user.save(function(err, newRow) {
             if (err) {
-                res.json({ result: false, err: err });
+                res.json({ result: false, err: " error query" });
                 return;
             }
 
-            res.json({ result: true, row: newRow });
-            return;
-        });
+            user.save(function(err, newRow) {
+                if (err) {
+                    res.json({ result: false, err: err });
+                    return;
+                }
 
-    });
+                res.json({ result: true, row: newRow });
+                return;
+            });
+        });
+    }
 });
 
 

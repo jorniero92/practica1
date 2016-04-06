@@ -5,7 +5,7 @@ angular.module("recipesAngular").service("HtmlStorage", ["$http", "$q", "apiPath
 
     this.saveUser = function(username) {
         localStorage.setItem("username", username);
-        console.info("username save User", username);
+        //console.info("username save User", username);
     };
     this.getUser = function() {
         return localStorage.getItem("username");

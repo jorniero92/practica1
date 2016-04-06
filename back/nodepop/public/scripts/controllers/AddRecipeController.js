@@ -1,4 +1,5 @@
-angular.module("recipesAngular").controller("AddMovieController", ["$scope", "$location", "$routeParams", "$log", "APIClient", "URL", "paths",
+angular.module("recipesAngular").controller("AddRecipeController", 
+    ["$scope", "$location", "$routeParams", "$log", "APIClient", "URL", "paths",
     function($scope, $location, $routeParams, $log, APIClient, URL, paths) {
 
         //scope init
@@ -10,10 +11,10 @@ angular.module("recipesAngular").controller("AddMovieController", ["$scope", "$l
         $scope.$emit("ChangeTitle", "Add Recipe");
 
 
-        $scope.addMovie = function() {
-            APIClient.createMovie($scope.model).then(
-                function(movie) {                
-                    $location.url(paths.movieList);
+        $scope.addRecipe = function() {
+            APIClient.createRecipe($scope.model).then(
+                function(recipe) {                
+                    $location.url(paths.recipeList);
                 },
                 function(error) {
                     $scope.errorMessage = "Fatal error. The end is near";

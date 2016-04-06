@@ -26,9 +26,7 @@ var usuarioSchema = mongoose.Schema({
 usuarioSchema.statics.list = function(sort, cb){
 
 	var query = User.find({});
-	
-	query.sort(sort);
-	query.select();
+
 	query.exec(function(err, rows){
 		if(err){
 			cb(err);

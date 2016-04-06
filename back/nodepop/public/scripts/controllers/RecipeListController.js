@@ -1,49 +1,23 @@
-angular.module("recipesAngular").controller("MoviesListController", ["$scope", "$location", "HtmlStorage","$log", "APIClient", "URL", "paths",
+angular.module("recipesAngular").controller("RecipeListController", ["$scope", "$location", "HtmlStorage","$log", "APIClient", "URL", "paths",
     function($scope, $location, HtmlStorage, $log, APIClient, URL, paths) {
 
         /*Redireccion si no esta logeado*/
         if(!HtmlStorage.getUser()){
             $location.url(paths.login);
-            console.info("Redireccion si no esta logeado: ", HtmlStorage.getUser());
+            console.info("Redireccion si no esta logeado RecipeListController: ", HtmlStorage.getUser());
         }
 
         $scope.model = [];
 
         $scope.uiState = 'loading';        
 
-        $scope.getMovieDetailURL = function(movie) {
-            console.info("getMovieDetailURL: ", paths.movieDetail);
-            return URL.resolve(paths.movieDetail, { id: movie.id });
+        $scope.getRecipeDetailURL = function(recipe) {
+            console.info("getRecipeDetailURL: ", paths.recipeDetail);
+            return URL.resolve(paths.recipeDetail, { id: recipe.id });
         };
 
-        $scope.rentMovie = function(movie) {
-            console.log("Pelicula: ", movie.id);
-            $scope.rentedId = movie.id;
 
-            if (!movie.userRent) {
-                console.log("No esta alquilada");
-                /*Alquilamos pelicula con un post*/
-                APIClient.rentMovie(movie, HtmlStorage.getUser()).then(
-                    // promesa resuelta
-                    function(data) {
-                        console.log("get Username",HtmlStorage.getUser());
-                        $log.log("SUCCESS", data);
-                        $scope.rented = true;
-                    },
-                    // promesa rechazada
-                    function(data) {
-                        $log.error("ERROR", data);
-                        $scope.uiState = 'error';
-                    }
-                );
-            } else {
-                console.log("Esta alquilada");
-                /*Devolvemos alert indicando error*/
-                $scope.rented = false;
-            }
-        };
-
-        APIClient.getMovies().then(
+        APIClient.getRecipes().then(
             // promesa resuelta
             function(data) {
                 $log.log("SUCCESS", data);
@@ -52,7 +26,7 @@ angular.module("recipesAngular").controller("MoviesListController", ["$scope", "
                     $scope.uiState = 'blank';
                 } else {
                     $scope.uiState = 'ideal';
-                    $scope.$emit("ChangeTitle", "Movies");
+                    $scope.$emit("ChangeTitle", "Recipes");
                 }
             },
             // promesa rechazada

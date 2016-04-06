@@ -1,16 +1,16 @@
-angular.module("recipesAngular").controller("MovieFormController", ["$scope", "APIClient", function($scope, APIClient) {
+angular.module("recipesAngular").controller("RecipeFormController", ["$scope", "APIClient", function($scope, APIClient) {
 
     $scope.model = {};
     $scope.successMessage = null;
     $scope.errorMessage = null;
 
-    $scope.saveMovie = function() {
-        APIClient.createMovie($scope.model).then(
-            function(movie) {
-                $scope.successMessage = "Movie saved! <a href=\"#/movies/" +
-                    movie.id + "\">View new movie detail</a>";
+    $scope.saveRecipe = function() {
+        APIClient.createRecipe($scope.model).then(
+            function(recipe) {
+                $scope.successMessage = "Recipe saved! <a href=\"#/recipes/" +
+                    recipe.id + "\">View new recipe detail</a>";
                 $scope.model = {};
-                $scope.movieForm.$setPristine();
+                $scope.recipeForm.$setPristine();
             },
             function(error) {
                 $scope.errorMessage = "Fatal error. The end is near";
