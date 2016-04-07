@@ -11,7 +11,7 @@ angular.module("recipesAngular").controller("AddRecipeController",
         $scope.$emit("ChangeTitle", "Add Recipe");
 
 
-        $scope.addRecipe = function() {
+        $scope.saveRecipe = function() {
             APIClient.createRecipe($scope.model).then(
                 function(recipe) {                
                     $location.url(paths.recipeList);
@@ -21,6 +21,5 @@ angular.module("recipesAngular").controller("AddRecipeController",
                 }
             )
         };
-
     }
 ]);

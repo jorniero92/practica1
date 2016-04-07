@@ -1,33 +1,35 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Recipe</th>
-            <th>Year</th>
-            <th>Rating</th>
-            <th>
-                <input type="search" ng-model="query.title" placeholder="Search..." class="from-control">
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="item in model | filter:query">
-            <td>
-                <img ng-src="{{::item.poster_url}}" alt="{{::item.title}}'s poster" title="{{::item.title}}">
-            </td>
-            <td>
-                <b>{{::item.title}}</b>
-            </td>
-            <td>
-                {{::item.release_date | date: "dd/MM/yyyy"}}
-            </td>
-            <td>
-                {{::item.rating}}
-            </td>
-            <td>
-                <a href="#{{::getDetailUrl({ stuff: item }) }}" class="btn btn-default">View</a>
-                <br>                
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div ng-controller="RecipeListController">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Recipe</th>
+                <th>Year</th>
+                <th>Rating</th>
+                <th>
+                    <input type="search" ng-model="query.title" placeholder="Search..." class="from-control">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in model | filter:query">
+                <td>
+                    <img ng-src="{{::item.poster_url}}" alt="{{::item.title}}'s poster" title="{{::item.title}}">
+                </td>
+                <td>
+                    <b>{{::item.title}}</b>
+                </td>
+                <td>
+                    {{::item.release_date | date: "dd/MM/yyyy"}}
+                </td>
+                <td>
+                    {{::item.rating}}
+                </td>
+                <td>
+                    <a href="#{{::getDetailUrl({ stuff: item }) }}" class="btn btn-default">View</a>
+                    <br>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

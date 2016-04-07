@@ -29,16 +29,7 @@ angular.module("recipesAngular").service("HtmlStorage", ["$http", "$q", "apiPath
             return true;
         }
     };
-/*
-    this.isLogin = function() {
-        var user = window.localStorage.getItem("nick") || "";
-        if (user == "") {
-            return false;
-        } else {
-            return true;
-        }
-    }
-*/
+
     this.removeUser = function() {
         window.localStorage.removeItem("username");
     };

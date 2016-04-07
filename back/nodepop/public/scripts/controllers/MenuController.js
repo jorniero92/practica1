@@ -1,4 +1,4 @@
-angular.module('recipesAngular').controller("MenuController", ["$scope", "HtmlStorage", "$location", "paths", function($scope, HtmlStorage, $location, paths) {
+angular.module('recipesAngular').controller("MenuController", ["$scope", "APIClient", "$log", "HtmlStorage", "$location", "paths", function($scope, APIClient, $log, HtmlStorage, $location, paths) {
     //Inyectamos dependencia de scope
 
     $scope.model = {
@@ -12,9 +12,10 @@ angular.module('recipesAngular').controller("MenuController", ["$scope", "HtmlSt
         function(data) {
             $log.log("SUCCESS", data);
             $scope.model = data.items;
-            if ($scope.model.length == 0)
+            console.info("data: ", data);
+            if ($scope.model.length == 0) {
                 $scope.uiState = 'blank'
-            else {
+            } else {
                 $scope.uiState = 'ideal'
             }
         },

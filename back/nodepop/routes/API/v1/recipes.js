@@ -8,9 +8,6 @@ var Usuario = mongoose.model('Usuario');
 var auth = require('../../../lib/auth');
 //var hash = require('hash.js');
 
-router.get('/', function(req, res, next) {
-    res.send('Hola Soy tu API');
-});
 
 router.get('/users', function(req, res, next) {
     var sort = req.query.sort || 'nickname';

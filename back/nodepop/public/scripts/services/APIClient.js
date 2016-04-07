@@ -1,5 +1,5 @@
 angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
-    console.info("apiPath en APIClient: ", apiPath);
+    //console.info("apiPath en APIClient: ", apiPath);
     this.apiRequest = function(url) {
         var deferred = $q.defer();
         $http.get(url).then(
@@ -14,17 +14,17 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
     };
 
     this.getItems = function() {
-        return this.apiRequest(apiPaths.items);
+        return this.apiRequest(apiPath.items);
     };
 
     this.getItem = function(itemID) {
-        var url = URL.resolve(apiPaths.itemDetail, { id: itemID });
+        var url = URL.resolve(apiPath.itemDetail, { id: itemID });
         return this.apiRequest(url);
     };
 /*
     this.registerUser = function(user) {
         var deferred = $q.defer();
-        $http.post(apiPaths.users, user).then(
+        $http.post(apiPath.users, user).then(
             function(response) {
                 deferred.resolve(response.data);
             },
@@ -37,7 +37,7 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
 */
     this.logIn = function(user) {
         var deferred = $q.defer();
-        $http.post(apiPaths.login, user).then(
+        $http.post(apiPath.login, user).then(
             function(response) {
                 deferred.resolve(response.data);
             },
