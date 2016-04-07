@@ -5,6 +5,7 @@ angular.module('recipesAngular').controller('LoginController', ["$scope", "$wind
     $scope.logUser = function() {
         APIClient.logIn($scope.model).then(
             function(response) {
+                console.info("nombre de usuario en scope.model ok: ", $scope.model);
                 LogUser.setLogin($scope.model.nickname);
                 var user = LogUser.getLogin();
                 console.log("Usuario logeado como", user);
@@ -14,7 +15,7 @@ angular.module('recipesAngular').controller('LoginController', ["$scope", "$wind
                 console.log('Login Hecho,Estoy dentro', response);
             },
             function(error) {
-                $location.path('/jgedffg');
+                $location.path('/error');
                 console.log("error al hacer Login", error);
             }
         );
