@@ -1,4 +1,4 @@
-angilar.module("recipesAngular").controller("RegisterUserController", ["$scope", "APIClient", function($scope, APIClient) {
+angular.module("recipesAngular").controller("RegisterUserController", ["$scope", "APIClient", function($scope, APIClient) {
     $scope.model = {};
     $scope.saveUser = function() {
         APIClient.registerUser($scope.model).then(

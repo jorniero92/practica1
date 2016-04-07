@@ -1,6 +1,5 @@
 angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
     console.info("apiPath en APIClient: ", apiPath);
-
     this.apiRequest = function(url) {
         var deferred = $q.defer();
         $http.get(url).then(
@@ -22,7 +21,7 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         var url = URL.resolve(apiPaths.itemDetail, { id: itemID });
         return this.apiRequest(url);
     };
-
+/*
     this.registerUser = function(user) {
         var deferred = $q.defer();
         $http.post(apiPaths.users, user).then(
@@ -35,10 +34,10 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         );
         return deferred.promise;
     };
-
-    this.logIn = function(credentials) {
+*/
+    this.logIn = function(user) {
         var deferred = $q.defer();
-        $http.post(apiPaths.loginApiPath, credentials).then(
+        $http.post(apiPaths.login, user).then(
             function(response) {
                 deferred.resolve(response.data);
             },
@@ -48,30 +47,8 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         );
         return deferred.promise;
     };
-
-
 
     /*
-    this.comproveLogin = function(user) {
-        var deferred = $q.defer();
-
-        //Hacer trabajo asíncrono
-        $http.post(apiPath.login, user).then(
-            function(response) {
-                console.info("comproveLogin OK");
-                //console.info("comproveLogin response.data OK:", response.data);
-                //Resolvemos promesa
-                deferred.resolve(response.data);
-            },
-            function(response) {
-                //Rechazar promesa
-                console.info("comproveLogin KO");
-                deferred.reject(response.data);
-            }
-        );
-        //Devolver promesa      
-        return deferred.promise;
-    };
 
     this.getUser = function() {
         return this.apiRequest(apiPath.nombre, apiPath.clave);

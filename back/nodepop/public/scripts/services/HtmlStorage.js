@@ -21,7 +21,7 @@ angular.module("recipesAngular").service("HtmlStorage", ["$http", "$q", "apiPath
         return window.localStorage.getItem("nick");
     };
     */
-    thi.isLogin = function() {
+    this.isLogin = function() {
         var user = window.localStorage.getItem("username") || "";
         if (user == "") {
             return false;

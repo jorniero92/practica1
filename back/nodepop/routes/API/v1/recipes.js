@@ -4,11 +4,11 @@ var express = require("express");
 var router = express.Router();
 var mongoose = require('mongoose');
 var Usuario = mongoose.model('Usuario');
-var Item = mongoose.model('Item');
+//var Item = mongoose.model('Item');
 var auth = require('../../../lib/auth');
-var hash = require('hash.js');
+//var hash = require('hash.js');
 
-router.get('/', auth(), function(req, res, next) {
+router.get('/', function(req, res, next) {
     res.send('Hola Soy tu API');
 });
 

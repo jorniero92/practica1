@@ -5,12 +5,8 @@ angular.module('recipesAngular').controller("MenuController", ["$scope", "HtmlSt
         selectedItem: paths.login
     };
     $scope.uiState = 'loading';
-    
-    /* ----------- DUUUUUUDAAAAAAAAAA ---------------------------------- */
     //$scope.paths = paths;
-
     //Scope methods
-
     APIClient.getItems().then(
         //Promesa resuelta:
         function(data) {
@@ -20,7 +16,6 @@ angular.module('recipesAngular').controller("MenuController", ["$scope", "HtmlSt
                 $scope.uiState = 'blank'
             else {
                 $scope.uiState = 'ideal'
-
             }
         },
         //Promesa rechazada:
@@ -34,7 +29,6 @@ angular.module('recipesAngular').controller("MenuController", ["$scope", "HtmlSt
         HtmlStorage.removeUser();
     };
 
-    /* ----------- DUUUUUUDAAAAAAAAAA ---------------------------------- */
     $scope.$watch("model.selectedItem", function(newValue, oldValue) {
         $scope.$emit("OnMenuChange", newValue);
     });
@@ -42,6 +36,5 @@ angular.module('recipesAngular').controller("MenuController", ["$scope", "HtmlSt
     $scope.$on("$locationChangeSuccess", function(evt, currentRoute) {
         $scope.model.selectedItem = $location.path();
     });
-    /* ----------- DUUUUUUDAAAAAAAAAA ---------------------------------- */
 
 }]);
