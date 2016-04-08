@@ -4,11 +4,7 @@
             <tr>
                 <th>Image</th>
                 <th>Recipe</th>
-                <th>Year</th>
-                <th>Rating</th>
-                <th>
-                    <input type="search" ng-model="query.title" placeholder="Search..." class="from-control">
-                </th>
+                <th>Tags</th>
             </tr>
         </thead>
         <tbody>
@@ -20,10 +16,7 @@
                     <b>{{::item.title}}</b>
                 </td>
                 <td>
-                    {{::item.release_date | date: "dd/MM/yyyy"}}
-                </td>
-                <td>
-                    {{::item.rating}}
+                    {{::item.categories}}
                 </td>
                 <td>
                     <a href="#{{::getDetailUrl({ stuff: item }) }}" class="btn btn-default">View</a>

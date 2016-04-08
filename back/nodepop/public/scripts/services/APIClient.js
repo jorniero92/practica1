@@ -21,20 +21,7 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         var url = URL.resolve(apiPath.itemDetail, { id: itemID });
         return this.apiRequest(url);
     };
-/*
-    this.registerUser = function(user) {
-        var deferred = $q.defer();
-        $http.post(apiPath.users, user).then(
-            function(response) {
-                deferred.resolve(response.data);
-            },
-            function(response) {
-                deferred.reject(response.data);
-            }
-        );
-        return deferred.promise;
-    };
-*/
+
     this.logIn = function(username) {
         var deferred = $q.defer();
         $http.post(apiPath.login, username).then(
@@ -46,12 +33,6 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
             }
         );
         return deferred.promise;
-    };
-
-    /*
-
-    this.getUser = function() {
-        return this.apiRequest(apiPath.nombre, apiPath.clave);
     };
 
 
@@ -83,5 +64,5 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         //devolver la promesa
         return deffered.promise;
     };
-    */
+    
 }]);

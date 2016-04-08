@@ -17,7 +17,7 @@ angular.module("recipesAngular").controller("RecipeListController", ["$scope", "
         };
 
 
-        APIClient.getItems().then(
+        APIClient.getRecipes().then(
             // promesa resuelta
             function(data) {
                 $log.log("SUCCESS", data);

@@ -5,7 +5,7 @@ angular.module('recipesAngular').controller("MenuController", ["$scope", "APICli
         selectedItem: paths.login
     };
     $scope.uiState = 'loading';
-    //$scope.paths = paths;
+    $scope.paths = paths;
     //Scope methods
     APIClient.getItems().then(
         //Promesa resuelta:
