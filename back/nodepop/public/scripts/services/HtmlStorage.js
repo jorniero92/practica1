@@ -1,18 +1,27 @@
-angular.module("pelisAngular").service("HtmlStorage", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
+angular.module("recipesAngular").service("HtmlStorage", ["$http", "$q", "apiPath", "URL", "$window", function($http, $q, apiPath, URL, $window) {
 
     this.user = null;
-
-
-    this.saveUser = function(username) {
-        localStorage.setItem("username", username);
-        console.info("username save User", username);
+    
+    this.setLogin = function(username) {
+        window.localStorage.setItem("username", username);
     };
+
     this.getUser = function() {
-        return localStorage.getItem("username");
+        return window.localStorage.getItem("username");
+    };
+
+    this.isLogin = function() {
+        var user = window.localStorage.getItem("username") || "";
+
+        if (user == "") {
+            return false;
+        } else {
+            return true;
+        }
     };
 
     this.removeUser = function() {
-        localStorage.removeItem("username");
+        window.localStorage.removeItem("username");
     };
 
 }]);

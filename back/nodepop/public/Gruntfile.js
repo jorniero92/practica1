@@ -1,5 +1,6 @@
-module.exports = function (grunt) {
-
+module.exports = function(grunt) {
+    grunt.loadNpmTasks('grunt-wiredep');
+    grunt.loadNpmTasks('grunt-injector');
     // Project configuration.
     grunt.initConfig({
 
@@ -47,6 +48,21 @@ module.exports = function (grunt) {
             js: {
                 files: ['scripts/**/*.js', 'scripts/*.js'],
                 tasks: ['concat']
+            }
+        },
+        wiredep: {
+          task: {
+            src: ['index.html']
+          }
+        },
+        injector: {
+            options: {
+                
+            },
+            scripts: {
+                files:{
+                    'index.html' : ['./scripts/**/*.js', './dist/*.css']
+                }
             }
         }
 

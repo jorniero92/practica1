@@ -1,15 +1,15 @@
-// En el modulo pelisAngular, defino el controlador
-angular.module('pelisAngular').controller("MenuController", ["$scope", "HtmlStorage", "$location", "paths", function($scope, HtmlStorage, $location, paths) {
+angular.module('recipesAngular').controller("MenuController", ["$scope", "APIClient", "$log", "HtmlStorage", "$location", "paths", function($scope, APIClient, $log, HtmlStorage, $location, paths) {
     //Inyectamos dependencia de scope
 
     $scope.model = {
         selectedItem: paths.login
     };
-
+    //sate provider
+    //$scope.uiState = 'loading';
     $scope.paths = paths;
-
     //Scope methods
 
+    
     $scope.getClassForItem = function(item) {
         if ($scope.model.selectedItem == item) {
             return "active";
@@ -22,7 +22,6 @@ angular.module('pelisAngular').controller("MenuController", ["$scope", "HtmlStor
         HtmlStorage.removeUser();
     };
 
-
     $scope.$watch("model.selectedItem", function(newValue, oldValue) {
         $scope.$emit("OnMenuChange", newValue);
     });
@@ -30,4 +29,5 @@ angular.module('pelisAngular').controller("MenuController", ["$scope", "HtmlStor
     $scope.$on("$locationChangeSuccess", function(evt, currentRoute) {
         $scope.model.selectedItem = $location.path();
     });
+
 }]);

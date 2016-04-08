@@ -1,14 +1,14 @@
-<div ng-controller="AddMovieController">
+<div ng-controller="AddRecipeController">
     <div class="text-center">
-        <h1> Add Movie </h1>
-        <form name="createMovie" novalidate class="form-signin" ng-submit="addMovie()">
+        <h1> Add Recipe </h1>
+        <form name="createRecipe" novalidate class="form-signin" ng-submit="addRecipe()">
             <div class="row">
                 <div class="col-sm-3">
-                    <label for="movieTitle">Movie Title</label>
+                    <label for="recipeTitle">Recipe Title</label>
                     <br>
-                    <input type="text" name="movieTitle" placeholder="Title..." class="form-control" autofocus required ng-model="model.title">
+                    <input type="text" name="recipeTitle" placeholder="Title..." class="form-control" autofocus required ng-model="model.title">
                     <br>
-                    <div class="text-danger" ng-show="createMovie.movieTitle.$dirty && createMovie.movieTitle.$error.required">
+                    <div class="text-danger" ng-show="createRecipe.recipeTitle.$dirty && createRecipe.recipeTitle.$error.required">
                         Title is required
                     </div>
                     <br>
@@ -16,15 +16,15 @@
                     <br>
                     <input type="url" name="poster" placeholder="URL Image..." class="form-control" required ng-model="model.poster_url">
                     <br>
-                    <div class="text-danger" ng-show="createMovie.poster.$dirty && createMovie.poster.$error.required && createMovie.poster.url">
+                    <div class="text-danger" ng-show="createRecipe.poster.$dirty && createRecipe.poster.$error.required && createRecipe.poster.url">
                         Url is required
                     </div>
                     <br>
-                    <label for="movie_url">Movie</label>
+                    <label for="recipe_url">Recipe</label>
                     <br>
-                    <input type="url" name="movie_url" placeholder="URL Image..." class="form-control" required ng-model="model.poster_url">
+                    <input type="url" name="recipe_url" placeholder="URL Image..." class="form-control" required ng-model="model.poster_url">
                     <br>
-                    <div class="text-danger" ng-show="createMovie.movie_url.$dirty && createMovie.movie_url.$error.required && createMovie.movie_url.url">
+                    <div class="text-danger" ng-show="createRecipe.recipe_url.$dirty && createRecipe.recipe_url.$error.required && createRecipe.recipe_url.url">
                         Url is required
                     </div>
                     <br>
@@ -34,7 +34,7 @@
                     <br>
                     <input type="date" name="year" class="form-control" required ng-model="model.release_date">
                     <br>
-                    <div class="text-danger" ng-show="createMovie.year.$dirty && createMovie.year.$error.required">
+                    <div class="text-danger" ng-show="createRecipe.year.$dirty && createRecipe.year.$error.required">
                         <br> Date is required
                     </div>
                     <br>
@@ -42,7 +42,7 @@
                     <br>
                     <input type="number" min="0" max="10" step="1" value="0" name="rating" placeholder="Points" class="form-control" required ng-model="model.rating">
                     <br>
-                    <div class="text-danger" ng-show="createMovie.rating.$dirty && createMovie.rating.$error.required">
+                    <div class="text-danger" ng-show="createRecipe.rating.$dirty && createRecipe.rating.$error.required">
                         <br> Rating is required
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <br>
                 </div>
                 <div class="col-sm-4">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!createMovie.$valid">Add Movie</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!createRecipe.$valid">Add Recipe</button>
                 </div>
             </div>
         </form>

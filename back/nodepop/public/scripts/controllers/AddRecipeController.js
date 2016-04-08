@@ -1,4 +1,5 @@
-angular.module("pelisAngular").controller("AddMovieController", ["$scope", "$location", "$routeParams", "$log", "APIClient", "URL", "paths",
+angular.module("recipesAngular").controller("AddRecipeController", 
+    ["$scope", "$location", "$routeParams", "$log", "APIClient", "URL", "paths",
     function($scope, $location, $routeParams, $log, APIClient, URL, paths) {
 
         //scope init
@@ -7,19 +8,18 @@ angular.module("pelisAngular").controller("AddMovieController", ["$scope", "$loc
         $scope.errorMessage = null;
 
         // Controller init
-        $scope.$emit("ChangeTitle", "Add Movie");
+        $scope.$emit("ChangeTitle", "Add Recipe");
 
 
-        $scope.addMovie = function() {
-            APIClient.createMovie($scope.model).then(
-                function(movie) {                
-                    $location.url(paths.movieList);
+        $scope.saveRecipe = function() {
+            APIClient.createRecipe($scope.model).then(
+                function(recipe) {                
+                    $location.url(paths.recipeList);
                 },
                 function(error) {
                     $scope.errorMessage = "Fatal error. The end is near";
                 }
             )
         };
-
     }
 ]);

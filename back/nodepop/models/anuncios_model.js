@@ -1,37 +1,21 @@
 "use strict";
 var mongooseConn = require('../lib/connectMongoose.js');
-
 var mongoose = require('mongoose');
-
-
 var express = require('express');
 var router = express.Router();
 
 var anuncioSchema = mongoose.Schema({
-    nombre: {
-        type: String,
-        unique: true,
-        sparse: true
-    },
-    venta: Boolean,
-    precio: Number,
-    foto: {
-        type: String,
-        unique: true,
-        sparse: true
-    },
-    tags: [String]
+    image: String, 
+    name: String,
+    categories: [String]
 });
 
-
 // lista
-anuncioSchema.statics.list = function(filtro, sort, cb) {
+anuncioSchema.statics.list = function(cb) {
 
 
-    var query = Anuncios.find(filtro);
-    //ejecutarlo
-    query.sort(sort); //solo ordena
-    query.select();
+    var query = Recipes.find();
+
     query.exec(function(err, rows) {
         if (err) {
             cb(err);
@@ -42,5 +26,5 @@ anuncioSchema.statics.list = function(filtro, sort, cb) {
     });
 };
 
-var Anuncios = mongoose.model('Anuncios', anuncioSchema);
-module.exports = Anuncios;
+var Recipes = mongoose.model('Recipes', anuncioSchema);
+module.exports = Recipes;

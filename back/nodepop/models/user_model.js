@@ -1,8 +1,5 @@
 "use strict";
-var mongooseConn = require('../lib/connectMongoose.js');
 var mongoose = require('mongoose');
-var express = require('express');
-var router = express.Router();
 
 var usuarioSchema = mongoose.Schema({
 	
@@ -18,7 +15,7 @@ var usuarioSchema = mongoose.Schema({
 		sparse: true
 	},
 
-	clave: String,
+	clave: String
 });
 
 
@@ -26,9 +23,7 @@ var usuarioSchema = mongoose.Schema({
 usuarioSchema.statics.list = function(sort, cb){
 
 	var query = User.find({});
-	
 	query.sort(sort);
-	query.select();
 	query.exec(function(err, rows){
 		if(err){
 			cb(err);
@@ -39,8 +34,4 @@ usuarioSchema.statics.list = function(sort, cb){
 	});
 };
 
-
-//lo registro en mongoose
 var User = mongoose.model('User', usuarioSchema);
-//exportamos en usuario "User"
-module.exports = User;

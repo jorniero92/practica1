@@ -4,7 +4,7 @@ var basicAuth = require('basic-auth');
 var mongoose = require('mongoose');
 var userModel = require('../models/user_model.js');
 
-var fn = function(user, pass) {
+var auth = function() {
     return function(req, res, next) {
         var userRequest = basicAuth(req); //sacar del req el usuario
 
@@ -27,4 +27,4 @@ var fn = function(user, pass) {
     }
 };
 
-module.exports = fn;
+module.exports = auth;

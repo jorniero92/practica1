@@ -1,13 +1,13 @@
-angular.module("pelisAngular").directive("mediaItemList", function() {
+angular.module("recipesAngular").directive("mediaItemList", function() {
     return {
         restrict: "AE",
+        templateUrl: "views/mediaItemList.html",
         scope: {
             model: "=items",
             getDetailUrl: "&",
             rentMovie: "&",
             rented: "=",
             rentedId: "="
-        },
-        templateUrl: "views/mediaItemList.html"
+        }
     };
 });
