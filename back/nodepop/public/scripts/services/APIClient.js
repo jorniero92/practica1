@@ -35,9 +35,9 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         return deferred.promise;
     };
 */
-    this.logIn = function(user) {
+    this.logIn = function(username) {
         var deferred = $q.defer();
-        $http.post(apiPath.login, user).then(
+        $http.post(apiPath.login, username).then(
             function(response) {
                 deferred.resolve(response.data);
             },

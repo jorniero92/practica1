@@ -1,4 +1,5 @@
-<div ng-controller="RecipeListController">
+<div>
+    <!-- ng-controller="RecipeListController" -->
     <h1 align="center">Recipes</h1>
     <button ng-click="model=[]">Delete All</button>
     <div class="jumbotron" ng-show="uiState=='blank'">
@@ -9,5 +10,6 @@
     </div>
     <div ng-include="'views/ProgressBar.html'" ng-show="uiState=='loading'"></div>
     <media-item-list items="model" get-detail-url="getRecipeDetailURL(stuff)" ng-show="uiState=='ideal'">
+        <div ng-include="'views/Menu.html'" ng-show="menu == true"></div>
     </media-item-list>
 </div>

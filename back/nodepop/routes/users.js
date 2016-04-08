@@ -2,11 +2,11 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-//var User = mongoose.model('User');
+var User = mongoose.model('User');
 
 router.get('/', function(req, res) {
     res.send('respond with a resource');
-
+    console.info("get ok");
     User.list(req.body, function(err, rows) {
         if (err) {
             res.json({ result: false, err: err });
@@ -20,36 +20,52 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-    //en user.clave y user.nombre
+    console.info("inicio del POST");
+
     var user = new User(req.body);
+    var queryUsuarios = User.find({ nombre: req.body.username, clave: req.body.password });
 
-    var queryUsuarios = User.find({ nombre: user.nombre });
-    console.info("queryUsuarios nombre post: ", queryUsuarios.nombre);
-    //console.info("pass en post: ", req.body.clave);
-    if (user.clave == queryUsuarios.clave) {
-        res.json({ result: true, row: row });
-        return;
-    } else {
-        queryUsuarios.exec(function(err, rows) {
+    //console.info("req body en el post username: ", req.body.username);
+    //console.info("req body en el post  password: ", req.body.password);
 
-            if (err) {
-                res.json({ result: false, err: " error query" });
-                return;
-            }
 
-            user.save(function(err, newRow) {
-                if (err) {
-                    res.json({ result: false, err: err });
-                    return;
-                }
+    queryUsuarios.exec(function(err, rows) {
+        console.log(rows);
+        if (rows.length == 0) {
+            console.info("Vacio");
+            res.json({ err: false, row: "vacio" });
+            return;
+        }
+        if (err) {
+            console.info("error en promesa usuario login");
+            res.json({ err: false, row: "error login" });
+            return;
+        } else {
+            console.info("usuario OK post de users");
+            res.json({ err: true, row: rows });
+        }
 
-                res.json({ result: true, row: newRow });
-                return;
-            });
-        });
-    }
-    //devolver algo si no esta la clave
+    });
+    
+
 });
 
+
+/*
+user.save(function(err, newRow) {
+            if (err) {
+                console.info("user.save.error");
+                res.json({ res: false, err: err });
+                return;
+            }
+            console.info("user.save.OK");
+            res.json({ res: true, row: newRow });
+            return;
+        });
+
+
+console.info("FIN DEL POST");
+});
+*/
 
 module.exports = router;

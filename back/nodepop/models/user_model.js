@@ -34,4 +34,4 @@ usuarioSchema.statics.list = function(sort, cb){
 	});
 };
 
-var Usuario = mongoose.model('Usuario', usuarioSchema);
+var User = mongoose.model('User', usuarioSchema);
