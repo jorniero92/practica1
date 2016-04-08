@@ -1,7 +1,7 @@
 angular.module("recipesAngular").service("HtmlStorage", ["$http", "$q", "apiPath", "URL", "$window", function($http, $q, apiPath, URL, $window) {
 
     this.user = null;
-
+    
     this.setLogin = function(username) {
         window.localStorage.setItem("username", username);
     };
@@ -12,6 +12,7 @@ angular.module("recipesAngular").service("HtmlStorage", ["$http", "$q", "apiPath
 
     this.isLogin = function() {
         var user = window.localStorage.getItem("username") || "";
+
         if (user == "") {
             return false;
         } else {

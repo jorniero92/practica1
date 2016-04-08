@@ -4,27 +4,19 @@ angular.module('recipesAngular').controller("MenuController", ["$scope", "APICli
     $scope.model = {
         selectedItem: paths.login
     };
-    $scope.uiState = 'loading';
+    //sate provider
+    //$scope.uiState = 'loading';
     $scope.paths = paths;
     //Scope methods
-    APIClient.getItems().then(
-        //Promesa resuelta:
-        function(data) {
-            $log.log("SUCCESS", data);
-            $scope.model = data.items;
-            console.info("data: ", data);
-            if ($scope.model.length == 0) {
-                $scope.uiState = 'blank'
-            } else {
-                $scope.uiState = 'ideal'
-            }
-        },
-        //Promesa rechazada:
-        function(data) {
-            $log.error("Error", data);
-            $scope.uiState = 'error';
+
+    
+    $scope.getClassForItem = function(item) {
+        if ($scope.model.selectedItem == item) {
+            return "active";
+        } else {
+            return "";
         }
-    );
+    };
 
     $scope.logout = function() {
         HtmlStorage.removeUser();

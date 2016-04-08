@@ -31,7 +31,8 @@ router.post('/', function(req, res) {
             return;
         }
         //comprobar si ya esta la receta
-        res.status(200).json({ result: true, recipe: newRecipe });
+        //res.status(200).json({ result: true, recipe: newRecipe });
+        res.status(200);
     });
 });
 
