@@ -1,5 +1,6 @@
 angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
     //console.info("apiPath en APIClient: ", apiPath);
+    
     this.apiRequest = function(url) {
         var deferred = $q.defer();
         $http.get(url).then(

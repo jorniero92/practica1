@@ -5,29 +5,24 @@ angular.module('recipesAngular').controller('LoginController', ["$scope", "$wind
     $scope.logUser = function() {
         APIClient.logIn($scope.model).then(
             function(response) {
-                console.info("nombre de usuario en scope.model ok: ", $scope.model);
+                console.info("usuario y contrseña escrita: ", $scope.model);
                 HtmlStorage.setLogin($scope.model.username);
                 var user = HtmlStorage.getUser();
 
-
-                console.log("Usuario logeado como, user: ", user);
+                //console.log("Usuario logeado como, user: ", user);
 
                 
                 if (response.err == true) {
 
                     $location.path('/recipeList');
-                    //$scope.uiState = 'ideal';
+                    $scope.uiState = 'ideal';//descomentado
                     $scope.$emit("ChangeTitle", "Recipe List");
                     $scope.model = {};
-                    console.log('Login Hecho,Estoy dentro', response);
-                    //console.log('RESPOSE 0: ', response.err);
+                    //console.log('Login Hecho,Estoy dentro', response);
+                    
                 } else {
-
-                    //$location.path('/');
-                    //$scope.uiState = 'error';
-                    //$scope.model = {};
-                    //$scope.$emit("ChangeTitle", $scope.model.title);
-                    console.log('Login Incorrecto', response);
+                    window.alert("Error, usuario o contraseña incorrecta");
+                    //console.log('Login Incorrecto', response);
 
                 }
 

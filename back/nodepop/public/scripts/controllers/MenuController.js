@@ -5,11 +5,15 @@ angular.module('recipesAngular').controller("MenuController", ["$scope", "APICli
         selectedItem: paths.login
     };
     //sate provider
-    //$scope.uiState = 'loading';
+    $scope.uiState = 'loading';
     $scope.paths = paths;
-    //Scope methods
-
     
+    //Scope methods
+    $scope.$emit("ChangeTitle", "Recipe List");
+    $scope.model = {};
+    
+
+
     $scope.getClassForItem = function(item) {
         if ($scope.model.selectedItem == item) {
             return "active";

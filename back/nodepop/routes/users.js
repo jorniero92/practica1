@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 router.get('/', function(req, res) {
-    //res.send('respond with a resource');
     User.list(req.body, function(err, rows) {
         if (err) {
             res.json({ result: false, err: err });
