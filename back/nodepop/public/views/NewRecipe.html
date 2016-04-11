@@ -9,7 +9,7 @@
                     <input type="text" name="recipeTitle" placeholder="Title..." class="form-control" autofocus required ng-model="model.nombre">
                     <br>
                     <div class="text-danger" ng-show="createRecipe.recipeTitle.$dirty && createRecipe.recipeTitle.$error.required">
-                        Title is required
+                        Recipe Title is required
                     </div>
                     <br>
                 </div>
@@ -29,7 +29,7 @@
                     <input type="text" name="tags" placeholder="Tags" class="form-control" required ng-model="model.tags">
                     <br>
                     <div class="text-danger" ng-show="createRecipe.tags.$dirty && createRecipe.tags.$error.required">
-                        <br> Rating is required
+                        <br> Tags are required
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -38,7 +38,7 @@
                     <input type="number" min="1" max="10" step="1" value="1" name="numPers" placeholder="Numer of people" class="form-control" required ng-model="model.numPers">
                     <br>
                     <div class="text-danger" ng-show="createRecipe.numPers.$dirty && createRecipe.numPers.$error.required">
-                        <br> Rating is required
+                        <br> Number form x people recipe
                     </div>
                 </div>
             </div>
@@ -69,18 +69,41 @@
             /////////////////////////////////////////////////////////////////////////////////////////// -->
             <div class="row">
                 <div class="col-sm-3">
-                    <label for="weight">Weight</label>
-                    <br>
-                    <input type="text" name="weight" placeholder="Weight" class="form-control" ng-model="model.weight">
-                    <br>
+                    <label for="weight1">Weight</label>
+                    <input type="text" name="weight1" placeholder="Weight 1" class="form-control" ng-model="model.weight1">
                 </div>
                 <div class="col-sm-3">
-                    <label for="food">Food</label>
-                    <br>
-                    <input type="text" name="food" placeholder="Food" class="form-control" ng-model="model.food">
-                    <br>
+                    <label for="food1">Food</label>
+                    <input type="text" name="food1" placeholder="Food 1" class="form-control" ng-model="model.food1">
                 </div>
                 <div class="col-sm-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="weight2"></label>
+                    <input type="text" name="weight2" placeholder="Weight 2" class="form-control" ng-model="model.weight2">
+                </div>
+                <div class="col-sm-3">
+                    <label for="food2"></label>
+                    <input type="text" name="food2" placeholder="Food 2" class="form-control" ng-model="model.food2">
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="weight3"></label>
+                    <input type="text" name="weight3" placeholder="Weight 3" class="form-control" ng-model="model.weight3">
+                </div>
+                <div class="col-sm-3">
+                    <label for="food3"></label>
+                    <input type="text" name="food3" placeholder="Food 3" class="form-control" ng-model="model.food3">
+                </div>
+                <div class="col-sm-6">
+                    <label for="overview">Overview (Optional)</label>
+                    <br>
+                    <textarea badwords type="text" name="overview" placeholder="Overview" class="form-control" ng-model="model.overview" rows="6"></textarea>
+                    <br>
+                </div>
                 <br>
             </div>
             <br>

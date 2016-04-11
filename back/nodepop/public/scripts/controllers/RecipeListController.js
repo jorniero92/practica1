@@ -11,10 +11,8 @@ angular.module("recipesAngular").controller("RecipeListController", ["$scope", "
         $scope.uiState = 'loading';
 
         $scope.getRecipeDetailURL = function(recipes) {
-            console.log("recipes: ", recipes);
             return URL.resolve(paths.recipeDetail, { id: recipes._id });
         };
-
 
         APIClient.getRecipes().then(
             // promesa resuelta
