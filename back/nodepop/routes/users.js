@@ -7,8 +7,8 @@ var User = mongoose.model('User');
 router.get('/', function(req, res) {
     User.list(req.body, function(err, rows) {
         if (err) {
-            res.json({ result: false, err: err });
             console.info('error en users.js');
+            res.json({ result: false, err: err });
             return;
         }
         res.json({ result: true, users: rows });
@@ -21,6 +21,7 @@ router.post('/', function(req, res) {
 
     var user = new User(req.body);
     var queryUsuarios = User.find({ nombre: req.body.username, clave: req.body.password });
+
 
     queryUsuarios.exec(function(err, rows) {
         //console.log(rows);

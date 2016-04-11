@@ -1,4 +1,12 @@
-<div>
-	<h1> Recipe User List OK</h1>
+<div ng-controller="RecipeListController">
+    <h1 align="center">My Recipes</h1>
+    <button ng-click="model=[]">Delete All</button>
+    <div class="jumbotron" ng-show="uiState=='blank'">
+        <p class="lead">No data hear</p>
+    </div>
+    <div class="alert alert-danger" ng-show="uiState=='error'">
+        Error while loading data
+    </div>
+    <div ng-include="'views/ProgressBar.html'" ng-show="uiState=='loading'"></div>
+    <media-item-list items="model" get-detail-url="getRecipeDetailURL(stuff)" ng-show="uiState=='ideal'"></media-item-list>
 </div>
-<h2> Recipe User List KO</h2>

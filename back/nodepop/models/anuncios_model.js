@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 
 var anuncioSchema = mongoose.Schema({
-    image: String, 
+    image: String,
     name: String,
     categories: [String]
 });
@@ -13,18 +13,17 @@ var anuncioSchema = mongoose.Schema({
 // lista
 anuncioSchema.statics.list = function(cb) {
 
-
     var query = Recipes.find();
-
     query.exec(function(err, rows) {
         if (err) {
             cb(err);
             return;
         }
+        //cb(rows);
         cb(null, rows);
         return;
     });
 };
 
 var Recipes = mongoose.model('Recipes', anuncioSchema);
-module.exports = Recipes;
+//module.exports = Recipes;

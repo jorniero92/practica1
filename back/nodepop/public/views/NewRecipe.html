@@ -3,58 +3,93 @@
         <h1> Add Recipe </h1>
         <form name="createRecipe" novalidate class="form-signin" ng-submit="addRecipe()">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <label for="recipeTitle">Recipe Title</label>
                     <br>
-                    <input type="text" name="recipeTitle" placeholder="Title..." class="form-control" autofocus required ng-model="model.title">
+                    <input type="text" name="recipeTitle" placeholder="Title..." class="form-control" autofocus required ng-model="model.nombre">
                     <br>
                     <div class="text-danger" ng-show="createRecipe.recipeTitle.$dirty && createRecipe.recipeTitle.$error.required">
                         Title is required
                     </div>
                     <br>
-                    <label for="poster">Poster</label>
+                </div>
+                <div class="col-sm-6">
+                    <label for="image">Image</label>
                     <br>
-                    <input type="url" name="poster" placeholder="URL Image..." class="form-control" required ng-model="model.poster_url">
+                    <input type="url" name="image" placeholder="URL Image..." class="form-control" required ng-model="model.image">
                     <br>
-                    <div class="text-danger" ng-show="createRecipe.poster.$dirty && createRecipe.poster.$error.required && createRecipe.poster.url">
-                        Url is required
-                    </div>
-                    <br>
-                    <label for="recipe_url">Recipe</label>
-                    <br>
-                    <input type="url" name="recipe_url" placeholder="URL Image..." class="form-control" required ng-model="model.poster_url">
-                    <br>
-                    <div class="text-danger" ng-show="createRecipe.recipe_url.$dirty && createRecipe.recipe_url.$error.required && createRecipe.recipe_url.url">
+                    <div class="text-danger" ng-show="createRecipe.image.$dirty && createRecipe.image.$error.required && createRecipe.image.url">
                         Url is required
                     </div>
                     <br>
                 </div>
-                <div class="col-sm-3">
-                    <label for="year">Year</label>
+                <div class="col-sm-6">
+                    <label for="tags">Tags</label>
                     <br>
-                    <input type="date" name="year" class="form-control" required ng-model="model.release_date">
+                    <input type="text" name="tags" placeholder="Tags" class="form-control" required ng-model="model.tags">
                     <br>
-                    <div class="text-danger" ng-show="createRecipe.year.$dirty && createRecipe.year.$error.required">
-                        <br> Date is required
-                    </div>
-                    <br>
-                    <label for="rating">Rating</label>
-                    <br>
-                    <input type="number" min="0" max="10" step="1" value="0" name="rating" placeholder="Points" class="form-control" required ng-model="model.rating">
-                    <br>
-                    <div class="text-danger" ng-show="createRecipe.rating.$dirty && createRecipe.rating.$error.required">
+                    <div class="text-danger" ng-show="createRecipe.tags.$dirty && createRecipe.tags.$error.required">
                         <br> Rating is required
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <label for="overview">Overview (Optional)</label>
+                    <label for="numPers">Recipe from X People: </label>
                     <br>
-                    <textarea badwords type="text" name="overview" placeholder="Overview" class="form-control" ng-model="model.overview" rows="6"></textarea>
+                    <input type="number" min="1" max="10" step="1" value="1" name="numPers" placeholder="Numer of people" class="form-control" required ng-model="model.numPers">
+                    <br>
+                    <div class="text-danger" ng-show="createRecipe.numPers.$dirty && createRecipe.numPers.$error.required">
+                        <br> Rating is required
+                    </div>
+                </div>
+            </div>
+            <br>
+            <!-- /////////////////////////////////////////////////////////////////////////////////////////// 
+            <div class="row">
+                <div class="col-sm-3">
+                    <div id="contenedor">
+                        <div class="added">
+                            <input type="text" name="weight" placeholder="Weight 1" class="form-control" ng-model="model.weight" id="campoWeight_1" />
+                            <a href="#" class="eliminar">&times;</a>
+                        </div>
+                    </div>
                     <br>
                 </div>
+                <div class="col-sm-3">
+                    <div id="contenedor">
+                        <div class="added">
+                            <input type="text" name="food" placeholder="Food 1" class="form-control" ng-model="model.food" id="campoFood_1" />
+                            <a href="#" class="eliminar">&times;</a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <a id="agregarCampo" class="btn btn-info" href="#">Add Item</a>
+                <br>
+            </div>
+            /////////////////////////////////////////////////////////////////////////////////////////// -->
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="weight">Weight</label>
+                    <br>
+                    <input type="text" name="weight" placeholder="Weight" class="form-control" ng-model="model.weight">
+                    <br>
+                </div>
+                <div class="col-sm-3">
+                    <label for="food">Food</label>
+                    <br>
+                    <input type="text" name="food" placeholder="Food" class="form-control" ng-model="model.food">
+                    <br>
+                </div>
+                <div class="col-sm-3"></div>
+                <br>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4"></div>
                 <div class="col-sm-4">
                     <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!createRecipe.$valid">Add Recipe</button>
                 </div>
+                <div class="col-sm-4"> </div>
             </div>
         </form>
     </div>

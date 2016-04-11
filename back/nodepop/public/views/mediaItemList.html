@@ -5,15 +5,17 @@
                 <th>Image</th>
                 <th>Recipe</th>
                 <th>Tags</th>
+                <th>Detail</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in model | filter:query">
+            <!-- <tr ng-repeat="item in model | filter:query"> -->
+            <tr ng-repeat="item in model">
                 <td>
-                    <img ng-src="{{::item.poster_url}}" alt="{{::item.title}}'s poster" title="{{::item.title}}">
+                    <img ng-src="{{::item.image}}">
                 </td>
                 <td>
-                    <b>{{::item.title}}</b>
+                    <b>{{::item.name}}</b>
                 </td>
                 <td>
                     {{::item.categories}}

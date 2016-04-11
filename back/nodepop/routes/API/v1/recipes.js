@@ -2,17 +2,15 @@
 var express = require("express");
 var router = express.Router();
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
 var auth = require('../../../lib/auth');
 var Recipe = mongoose.model('Recipes');
-//var hash = require('hash.js');
 
 router.get('/', function(req, res) {
-    console.log("aqui get");
+    console.log("aqui get recipe list.js");
     Recipe.list(function(err, rows) {
         if (err) {
-            res.json({ result: false, err: err });
             console.info('error en recipe.js');
+            res.json({ result: false, err: err });            
             return;
         }
         res.json({ result: true, recipes: rows });
@@ -21,8 +19,9 @@ router.get('/', function(req, res) {
 });
 
 
+
 router.post('/', function(req, res) {
-    //res.send('hola soy post');
+
     console.log("Body: ", req.body);
     var recipe = new Recipe(req.body);
     recipe.save(function(err, newRecipe) {
@@ -32,7 +31,7 @@ router.post('/', function(req, res) {
         }
         //comprobar si ya esta la receta
         //res.status(200).json({ result: true, recipe: newRecipe });
-        res.status(200);
+        res.status(200).json({ result: true, recipe: newRecipe });
     });
 });
 

@@ -4,10 +4,7 @@ angular.module("recipesAngular").directive("mediaItemList", function() {
         templateUrl: "views/mediaItemList.html",
         scope: {
             model: "=items",
-            getDetailUrl: "&",
-            rentMovie: "&",
-            rented: "=",
-            rentedId: "="
+            getDetailUrl: "&"  
         }
     };
 });
