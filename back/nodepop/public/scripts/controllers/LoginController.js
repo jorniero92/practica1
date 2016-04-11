@@ -6,10 +6,9 @@ angular.module('recipesAngular').controller('LoginController', ["$scope", "$wind
     $scope.logUser = function() {
         APIClient.logIn($scope.model).then(
             function(response) {
-                //console.info("usuario y contrseña escrita: ", $scope.model);
                 HtmlStorage.setLogin($scope.model.username);
                 var user = HtmlStorage.getUser();
-                console.log("user en login: ", user);
+                //console.log("user en login: ", user);
 
                 if (response.err == true) {
 

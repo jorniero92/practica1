@@ -10,9 +10,10 @@ angular.module("recipesAngular").controller("AddRecipeController", ["$scope", "$
         $scope.$emit("ChangeTitle", "Add Recipe");
 
 
-        $scope.saveRecipe = function() {
+        $scope.addRecipe = function() {
             APIClient.createRecipe($scope.model).then(
                 function(recipe) {
+                    console.info("peli guardada");
                     $location.url(paths.recipeList);
                 },
                 function(error) {
