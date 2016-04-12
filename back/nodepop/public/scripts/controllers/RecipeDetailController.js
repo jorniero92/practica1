@@ -7,6 +7,7 @@ angular.module("recipesAngular").controller("RecipeDetailController", ["$scope",
             APIClient.getRecipe($routeParams.id).then(
                 //pelicula encontrada
                 function(recipe) {
+                    console.log("getRecipe en RecipeDetailController: ", recipe);
                     $scope.model = recipe;
                     $scope.uiState = 'ideal';
                     $scope.$emit("ChangeTitle", $scope.model.title);

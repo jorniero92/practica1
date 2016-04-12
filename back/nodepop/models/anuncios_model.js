@@ -8,6 +8,9 @@ var anuncioSchema = mongoose.Schema({
     image: String,
     name: String,
     categories: [String]
+
+
+
 });
 
 // lista

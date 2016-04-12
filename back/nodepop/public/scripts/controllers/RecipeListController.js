@@ -19,7 +19,6 @@ angular.module("recipesAngular").controller("RecipeListController", ["$scope", "
         APIClient.getRecipes().then(
             // promesa resuelta
             function(data) {
-                //$log.log("SUCCESS: ", data.recipes);
                 $scope.model = data.recipes;
                 if ($scope.model.length == 0) {
                     $scope.uiState = 'blank';

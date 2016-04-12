@@ -1,5 +1,4 @@
 angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
-    //console.info("apiPath en APIClient: ", apiPath);
 
     this.apiRequest = function(url) {
         var deferred = $q.defer();
@@ -22,27 +21,14 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
         //var url = URL.resolve(apiPath.itemDetail, { id: itemID });
         var url = URL.resolve(apiPath.itemDetail);
         return this.apiRequest(url);
+
     };
 
     this.logIn = function(username) {
         var deferred = $q.defer();
         $http.post(apiPath.login, username).then(
             function(response) {
-                /*
-                //usuario correcto
-                console.log("username: ", username);
-                console.log("password: ", password);
-                console.log("response.data.row[0].nombre: ", response.data.row[0].nombre);
-                console.log("response.data.row[0].nombre: ", response.data.row[0].nombre);
-                if (username == response.data.row[0].nombre && password ==  response.data.row[0].clave) {
-                    deferred.resolve(response.data);
-                } else {
-                    deferred.reject(response.data);
-                }
-                */
                 deferred.resolve(response.data);
-
-                
             },
             function(response) {
                 deferred.reject(response.data);
@@ -57,7 +43,8 @@ angular.module("recipesAngular").service("APIClient", ["$http", "$q", "apiPath",
     };
 
     this.getRecipe = function(recipeId) {
-        var url = URL.resolve(apiPath.recipeDetail, { id: recipeId });
+        var url = URL.resolve(apiPath.recipesDetail, { recipeId: recipeId });
+        console.log("url: ", url, recipeId, apiPath.recipeDetail);
         return this.apiRequest(url);
     };
 
